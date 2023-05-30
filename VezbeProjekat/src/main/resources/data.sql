@@ -45,7 +45,8 @@ INSERT INTO odeljenje(
 	VALUES (nextval('ODELJENJE_SEQ'), 'Kileraba 123', 'Farmaceut', 4);
 	
 INSERT INTO pacijent (id, ime, prezime, zdr_osiguranje, datum_rodjenja, dijagnoza, odeljenje)
-	VALUES (nextval('PACIJENT_SEQ'), 'Vuk', 'Stojic', True, '09.19.2020', 1, 1);
+	VALUES (nextval('PACIJENT_SEQ'), 'Vuk', 'Stojic', True, '19.09.2020', 1, 1);
+
 	
 INSERT INTO pacijent (id, ime, prezime, zdr_osiguranje, datum_rodjenja, dijagnoza, odeljenje)
-	VALUES (nextval('PACIJENT_SEQ'), 'Pera', 'Peric', False, '03.24.2021', 2, 2);
+	VALUES (nextval('PACIJENT_SEQ'), 'Pera', 'Peric', False, '24.03.2021', 2, 2);

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BolnicaComponent } from './bolnica.component';
+import { PacijentDialogComponent } from './pacijent-dialog.component';
 
-describe('BolnicaComponent', () => {
-  let component: BolnicaComponent;
-  let fixture: ComponentFixture<BolnicaComponent>;
+describe('PacijentDialogComponent', () => {
+  let component: PacijentDialogComponent;
+  let fixture: ComponentFixture<PacijentDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BolnicaComponent ]
+      declarations: [ PacijentDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BolnicaComponent);
+    fixture = TestBed.createComponent(PacijentDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -39,7 +39,10 @@ public class BolnicaService {
 	}
 
 	public boolean existsById(long id) {
-		return getById(id).isPresent();
+		if(repo.existsById(id)) {
+			return true;
+		}else
+			return false;
 	}
 
 	public void deleteById(long id) {
