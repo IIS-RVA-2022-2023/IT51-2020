@@ -6,7 +6,6 @@ import { DijagnozaComponent } from './components/dijagnoza/dijagnoza.component';
 import { PacijentComponent } from './components/pacijent/pacijent.component';
 import { OdeljenjeComponent } from './components/odeljenje/odeljenje.component';
 import { BolnicaComponent } from './components/bolnica/bolnica.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -31,6 +30,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PocetnaComponent } from './components/pocetna/pocetna.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ONamaComponent } from './components/o-nama/o-nama.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BolnicaDialogComponent,
     OdeljenjeDialogComponent,
     PacijentDialogComponent,
-    DijagnozaDialogComponent
+    DijagnozaDialogComponent,
+    PocetnaComponent,
+    ONamaComponent
   ],
   imports: [
     AppRoutingModule,
@@ -66,7 +71,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     MatNativeDateModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

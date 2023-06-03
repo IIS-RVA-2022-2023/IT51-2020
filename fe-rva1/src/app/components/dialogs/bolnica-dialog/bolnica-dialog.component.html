@@ -23,18 +23,18 @@
             </mat-form-field>
         </div>
         <div mat-dialog-actions>
-            <button mat-button *ngIf="flagArtDialog==1" type="submit" [mat-dialog-close]="1" (click)="add()"
+            <button mat-raised-button *ngIf="flagArtDialog==1" type="submit" [mat-dialog-close]="1" (click)="add()"
                 [disabled]="!formControl.valid">
                 Sačuvaj
             </button>
-            <button mat-button *ngIf="flagArtDialog==2" type="submit" [mat-dialog-close]="1" (click)="update()"
+            <button mat-raised-button *ngIf="flagArtDialog==2" type="submit" [mat-dialog-close]="1" (click)="update()"
                 [disabled]="!formControl.valid">
                 Sačuvaj
             </button>
-            <button mat-button *ngIf="flagArtDialog==3" type="submit" [mat-dialog-close]="1" (click)="delete()">
+            <button mat-raised-button *ngIf="flagArtDialog==3" type="submit" [mat-dialog-close]="1" (click)="delete()">
                 Obriši
             </button>
-            <button mat-button (click)="cancel()">
+            <button mat-raised-button (click)="cancel()">
                 Poništi
             </button>
         </div>

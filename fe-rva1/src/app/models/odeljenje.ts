@@ -6,5 +6,4 @@ export class Odeljenje {
     naziv!: string;
     lokacija!: string;
     bolnica!: Bolnica;
-    
 }

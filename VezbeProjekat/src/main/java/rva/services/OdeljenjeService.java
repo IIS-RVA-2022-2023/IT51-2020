@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import rva.models.Bolnica;
 import rva.models.Odeljenje;
 import rva.repository.OdeljenjeRepository;
 
@@ -21,6 +22,10 @@ public class OdeljenjeService {
 	
 	public Optional<Odeljenje> getById(Long id){
 		return repo.findById(id);
+	}
+	
+	public List<Odeljenje> findByBolnica(Bolnica bolnica){
+		return repo.findByBolnica(bolnica);
 	}
 	
 	public Optional<List<Odeljenje>> getByNaziv(String naziv){

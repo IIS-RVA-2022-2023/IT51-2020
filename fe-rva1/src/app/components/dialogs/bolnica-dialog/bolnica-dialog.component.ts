@@ -19,7 +19,19 @@ export class BolnicaDialogComponent {
 
   public add(): void {
     console.log("ID je " + this.dataBolnica.id + this.dataBolnica.naziv);
+
+    
+    if(isNaN(this.dataBolnica.budzet)) {
+
+      this.snackBar.open('Ne mozete uneti broj za budzet bolnice!', 'OK', {
+        duration: 2500
+      })
+
+      return;
+    }
+
     this.bolnicaService.addBolnica(this.dataBolnica).subscribe(() => {
+
       this.snackBar.open('Uspesno dodata bolnica: ' + this.dataBolnica.naziv, 'OK', {
         duration: 2500
       })
@@ -34,6 +46,16 @@ export class BolnicaDialogComponent {
 
 
   public update(): void {
+
+    if(isNaN(this.dataBolnica.budzet)) {
+
+      this.snackBar.open('Ne mozete uneti broj za budzet bolnice!', 'OK', {
+        duration: 2500
+      })
+
+      return;
+    }
+
     this.bolnicaService.updateBolnica(this.dataBolnica).subscribe(() => {
       this.snackBar.open('Uspesno izmenjen artikl: ' + this.dataBolnica.naziv, 'OK', {
         duration: 2500

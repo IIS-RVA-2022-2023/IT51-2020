@@ -19,23 +19,24 @@
         </div>
 
         <div class="form">
-            <mat-form-field>
-                <mat-select [(ngModel)]="dataOdeljenje.bolnica" placeholder="Bolnica" name="bolnica"
-                    [compareWith]="compareTo" [disabled]="flagArtDialog == 3">
+            <mat-form-field class="form-field">
+                <mat-select [compareWith]="compare" placeholder="bolnica" name="bolnica" [(ngModel)]="dataOdeljenje.bolnica" [disabled]="flagArtDialog==3" required>
                     <mat-option *ngFor="let bolnica of bolnice" [value]="bolnica">
-                        {{ bolnica.naziv }}
+                        {{bolnica.id}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
+        
+
         <div mat-dialog-actions>
-            <button mat-button *ngIf="flagArtDialog == 1" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+            <button mat-raised-button *ngIf="flagArtDialog == 1" [disabled]="!formControl.valid" [mat-dialog-close]="1"
                 (click)="add()">Sačuvaj</button>
-            <button mat-button *ngIf="flagArtDialog == 2" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+            <button mat-raised-button *ngIf="flagArtDialog == 2" [disabled]="!formControl.valid" [mat-dialog-close]="1"
                 (click)="update()">Sačuvaj</button>
-            <button mat-button *ngIf="flagArtDialog == 3" [mat-dialog-close]="1" (click)="delete()">Obriši</button>
-            <button mat-button (click)="cancel()" tabindex="-1">Poništi</button>
+            <button mat-raised-button *ngIf="flagArtDialog == 3" [mat-dialog-close]="1" (click)="delete()">Obriši</button>
+            <button mat-raised-button (click)="cancel()" tabindex="-1">Poništi</button>
         </div>
     </form>
 </div>

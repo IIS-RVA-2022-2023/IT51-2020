@@ -1,1 +1,67 @@
-<p>pacijent-dialog works!</p>
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flagArtDialog == 1">Dodavanje pacijenta</h3>
+    <h3 mat-dialog-title *ngIf="flagArtDialog == 2">Modifikacija pacijenta: {{dataPacijent.id}}</h3>
+    <h3 mat-dialog-title *ngIf="flagArtDialog == 3">Brisanje pacijenta: {{dataPacijent.id}}</h3>
+
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Ime" [(ngModel)]="dataPacijent.ime" name="ime" [disabled]="flagArtDialog == 3"
+                    required>
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Prezime" [(ngModel)]="dataPacijent.prezime" name="prezime" [disabled]="flagArtDialog == 3"
+                    required>
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-checkbox style="align-content: flex-end" [(ngModel)]="dataPacijent.zdrOsiguranje" name="zdrOsiguranje"
+                [disabled]="flagArtDialog == 3">
+                Zdravstveno Osiguranje</mat-checkbox>
+        </div>
+
+        <div class="form">
+            <mat-form-field>
+                <input matInput [matDatepicker]="datumRodjenja" placeholder="Datum Rodjenja"
+                    [(ngModel)]="dataPacijent.datumRodjenja" name="datumRodjenja" [disabled]="flagArtDialog == 3">
+                <mat-datepicker-toggle matSuffix [for]="datumRodjenja"></mat-datepicker-toggle>
+                <mat-datepicker #datumRodjenja></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field>
+                <mat-select [(ngModel)]="dataPacijent.odeljenje" placeholder="Odeljenje" name="odeljenje"
+                    [compareWith]="compareTo" [disabled]="flagArtDialog == 3">
+                    <mat-option *ngFor="let odeljenje of odeljenja" [value]="odeljenje">
+                        {{ odeljenje.naziv }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field>
+                <mat-select [(ngModel)]="dataPacijent.dijagnoza" placeholder="Dijagnoza" name="dijagnoza"
+                    [compareWith]="compareTo" [disabled]="flagArtDialog == 3">
+                    <mat-option *ngFor="let dijagnoza of dijagnoze" [value]="dijagnoza">
+                        {{ dijagnoza.naziv }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div mat-dialog-actions>
+            <button mat-raised-button *ngIf="flagArtDialog == 1" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+                (click)="add()">Sačuvaj</button>
+            <button mat-raised-button *ngIf="flagArtDialog == 2" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+                (click)="update()">Sačuvaj</button>
+            <button mat-raised-button *ngIf="flagArtDialog == 3" [mat-dialog-close]="1" (click)="delete()">Obriši</button>
+            <button mat-raised-button (click)="cancel()" tabindex="-1">Poništi</button>
+        </div>
+    </form>
+</div>

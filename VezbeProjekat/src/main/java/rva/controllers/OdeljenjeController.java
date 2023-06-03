@@ -2,6 +2,7 @@ package rva.controllers;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import rva.models.Bolnica;
 import rva.models.Odeljenje;
+import rva.services.BolnicaService;
 import rva.services.OdeljenjeService;
 
 @RestController
@@ -22,6 +25,8 @@ public class OdeljenjeController {
 
 	@Autowired
 	private OdeljenjeService service;
+	@Autowired
+	private BolnicaService bolnicaService;
 	
 	@GetMapping("/odeljenje")
 	public ResponseEntity<List<Odeljenje>> getAllOdeljenje(){
@@ -61,7 +66,24 @@ public class OdeljenjeController {
 		
 	}
 	
-
+	@GetMapping("odeljenja/{id}")
+	public ResponseEntity<?> getAllForBolnica(@PathVariable("id") int id) {
+		
+		Optional<Bolnica> bolnicaOpt = bolnicaService.getById(id);
+		
+		if(bolnicaOpt.isPresent()) {
+			
+			List<Odeljenje> odeljenja = service.findByBolnica(bolnicaOpt.get());
+			
+			if(odeljenja.isEmpty())
+				return new ResponseEntity<>("Odeljenja nisu pronadjena.", HttpStatus.NOT_FOUND);
+			
+			return new ResponseEntity<>(odeljenja, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity ("Bolnica nije pronadjena", HttpStatus.NOT_FOUND);
+		
+	}
 	
 	@PostMapping("/odeljenje")
 	public ResponseEntity<?> createOdeljenje(@RequestBody Odeljenje odeljenje){

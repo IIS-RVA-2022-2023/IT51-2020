@@ -4,8 +4,13 @@
     min-width: 450px;
 }
 
+.container>* {
+    width: 100%;
+}
+
 .form {
     display: flex;
+    padding-top: 6px;
     justify-content: center;
 }
 

@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(110.6deg, rgb(156, 116, 129) -18.3%, 
+  rgb(67, 54, 74) 16.4%,
+  rgb(47, 48, 67) 68.2%,
+  rgb(27, 23, 36) 99.1%);
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: bold;
+  white-space: nowrap;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transition: opacity 0.5s;
+
+}
+
+.slide-in {
+  opacity: 1;
+  animation: slideTitle 2s ease-in-out forwards;
+}
+
+.slide-out {
+  animation: slideTitle 2s ease-in-out forwards;
+}
+
+@keyframes slideTitle {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-80%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-210%);
+    opacity: 0;
+  }
+}

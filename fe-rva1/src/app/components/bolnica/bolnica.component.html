@@ -1,49 +1,61 @@
 <mat-toolbar color="primary">
-    <span class="title-center">Bolnica</span>
- </mat-toolbar>
- 
-  <div class="container mat-elavation-z8">
-    <mat-table #table [dataSource]="dataSource" class="mat-cell">
-      <!--ID-->
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
-      </ng-container>
-      <!--Naziv-->
-      <ng-container matColumnDef="naziv">
-        <mat-header-cell *matHeaderCellDef>Naziv</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.naziv }}</mat-cell>
-      </ng-container>
-      <!-- Adresa -->
-      <ng-container matColumnDef="adresa">
-        <mat-header-cell *matHeaderCellDef>Adresa</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.adresa }}</mat-cell>
-      </ng-container>
-      <!-- Budzet -->
-      <ng-container matColumnDef="budzet">
-        <mat-header-cell *matHeaderCellDef>Budzet</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.budzet }}</mat-cell>
-      </ng-container>
-      <!-- Action Buttons -->
-      <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef>
-          <button (click)="openDialog(1)" mat-icon-button color="primary">
-            <mat-icon>add</mat-icon>
-          </button>
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row; let i = index">
-          <button (click)="openDialog(2, row)" mat-icon-button color="primary">
-            <mat-icon aria-label="Edit">edit</mat-icon>
-          </button>
-          <button (click)="openDialog(3, row)" mat-icon-button color="primary">
-            <mat-icon aria-label="Delete">delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row
-        style="cursor: pointer;"
-        *matRowDef="let row; columns: displayedColumns">
-      </mat-row>
-    </mat-table>
-  </div>
+  <span class="title-center">Bolnica</span>
+</mat-toolbar>
+
+<div class="container mat-elevation-z8">
+    <mat-form-field>
+      <input matInput placeholder="Pretraga bolnica..." (keyup)="applyFilter($event)">
+    </mat-form-field>
+    <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="naziv">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.naziv }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="adresa">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Adresa</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.adresa }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="budzet">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Budzet</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.budzet }}</mat-cell>
+        </ng-container>
+
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button (click)="openDialog(1)" mat-icon-button color="primary">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row; let i = index">
+            <button (click)="openDialog(2, row)" mat-icon-button color="primary">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+            <button (click)="openDialog(3, row)" mat-icon-button color="primary">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row style="cursor: pointer" *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)">
+        </mat-row>
+        </mat-table>
+        <mat-paginator
+            [length]="100"
+            [pageSize]="5"
+            [pageSizeOptions]="[5,10,25,100]">
+        </mat-paginator>
+        </div>
+        <div class="container mat-elevation-z8">
+          <app-odeljenje
+          *ngIf="selektovanaBolnica1" [selektovanaBolnica]="selektovanaBolnica1">
+          </app-odeljenje>
+        </div>

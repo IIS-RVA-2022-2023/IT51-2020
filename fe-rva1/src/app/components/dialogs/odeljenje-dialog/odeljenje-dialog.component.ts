@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { Bolnica } from 'src/app/models/bolnica';
 import { Odeljenje } from 'src/app/models/odeljenje';
-import { BolnicaService } from 'src/app/services/bolnica.service';
 import { OdeljenjeService } from 'src/app/services/odeljenje.service';
+import { BolnicaService } from 'src/app/services/bolnica.service';
 
 @Component({
   selector: 'app-odeljenje-dialog',
@@ -15,8 +15,8 @@ import { OdeljenjeService } from 'src/app/services/odeljenje.service';
 export class OdeljenjeDialogComponent {
 
   public flagArtDialog!: number;
-  public bolnice!: Bolnica[];
   private subscription!: Subscription;
+  bolnice!: Bolnica[];
 
   constructor(public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<OdeljenjeDialogComponent>,
@@ -24,12 +24,20 @@ export class OdeljenjeDialogComponent {
     public odeljenjeService: OdeljenjeService,
     public bolnicaService: BolnicaService) { }
 
-  ngOnInit() {
-    this.subscription = this.bolnicaService.getAllBolnica().subscribe(data => { this.bolnice = data });
-  }
+    ngOnInit(): void {
 
-  compareTo(a: any, b: any) {
-    return a.id == b.id;
+      this.bolnicaService.getAllBolnica().subscribe(
+
+        data => {
+          this.bolnice = data;
+        }
+
+      )
+
+    }
+
+  public compare(a:any, b:any) {
+    return a.id = b.id;
   }
 
   public add(): void {
@@ -44,6 +52,8 @@ export class OdeljenjeDialogComponent {
           duration: 2500
         })
       };
+
+      console.log(this.dataOdeljenje.bolnica.naziv);
   }
 
 
