@@ -14,7 +14,7 @@ const routes: Routes = [ { path: 'odeljenje', component: OdeljenjeComponent },
 { path: 'odeljenje', component: OdeljenjeComponent},
 { path: 'pocetna', component: PocetnaComponent},
 { path: 'oNama', component: ONamaComponent},
-{ path: '', redirectTo: '/bolnica', pathMatch: 'full'}
+{ path: '', redirectTo: '/pocetna', pathMatch: 'full'}
 ];
 
 @NgModule({

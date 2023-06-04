@@ -34,6 +34,7 @@ import { PocetnaComponent } from './components/pocetna/pocetna.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ONamaComponent } from './components/o-nama/o-nama.component';
 import { MatButtonModule } from '@angular/material/button';
+import { ExtraOptions, RouterModule, Routes } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatNativeDateModule,
     MatSortModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
